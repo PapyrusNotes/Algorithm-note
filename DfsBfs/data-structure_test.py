@@ -5,7 +5,6 @@ def deque_for_bfs(data: list):
 def stack_for_dfs(data: list):
     stack = []
 
-    stack.append()
 
 
 
