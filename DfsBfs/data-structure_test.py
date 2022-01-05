@@ -1,5 +1,18 @@
-def deque_for_bfs(data: list):
-    from collections import deque
+def deque_for_bfs(graph, v, visited):
+    from collections import deque       # 큐 구현을 위한 deque 라이브러리
+
+    queue = deque([v])             # dequeue에 첫 노드를 삽입한다.
+    visited[v] = True                   # dequeue에 처음 삽입된 노드를 방문 처리.
+
+    while queue:
+        print('current Queue is : ', queue)
+        popped = queue.popleft()
+        print(f'{popped} popped', end='\n')
+
+        for node in graph[popped]:
+            if not visited[node]:
+                queue.append(node)
+                visited[node] = True
 
 
 def recur_dfs(graph, v, visited):
@@ -48,11 +61,11 @@ def stack_dfs(graph, v, visited):
     while node_stack:                   # 스택이 빌 때까지(스택이 비면 종료한다)
         top = node_stack[-1]            # 스택의 최상단 노드와(node_stack[-1]로 커서 업데이트)
 
-        if all_visited(graph, top, visited):    # 스택 최상단 노드의 인접노드가 전부 방문됐을 때
-            print('popped: ', node_stack.pop()) # 최상단 노드 제거
+        if all_visited(graph, top, visited):     # 스택 최상단 노드의 인접노드가 전부 방문됐을 때
+            print('popped: ', node_stack.pop())  # 최상단 노드 제거
         else:
-            for node in graph[top]:
-                if visited[node]:
+            for node in graph[top]:              # 스택 최상단 노드의 인접노드들을 순회하면서
+                if visited[node]:                # 방문했다면 다음 인접노드를 방문한다.
                     continue
                 else:
                     node_stack.append(node)  # 방문 안 한 노드 하나를 삽입하고 (->가장 작은 노드 삽입 기능으로 보완)
@@ -71,17 +84,17 @@ def main():
     처음에는 전부 방문하지 않았으므로 FALSE로 초기화
    """
 
-    graph = [[], [2, 3, 8],[1,7],[1,4,5],[3,5],[3,4],[7],[2,6,8],[1,7]]
+    graph = [[], [2, 3, 8], [1, 7], [1, 4, 5], [3, 5], [3, 4], [7], [2, 6, 8], [1, 7]]
     visited = [False]*len(graph)
 
     # 재귀로 dfs 구현
     # recur_dfs(graph, 1, visited)  # graph, 시작 노드, 방문여부 정보를 매개변수로 넣는다.
 
     # 스택으로 dfs 구현
-    stack_dfs(graph, 1, visited)
+    # stack_dfs(graph, 1, visited)
 
     # deque로 bfs 구현
-    # deque_for_bfs(data_stream)
+    deque_for_bfs(graph, 1, visited)
 
 
 if __name__ == '__main__':
