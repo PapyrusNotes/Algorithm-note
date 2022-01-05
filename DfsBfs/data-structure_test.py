@@ -26,6 +26,12 @@ def recur_dfs(graph, v, visited):
 
 
 def all_visited(graph, top, visited) -> bool:
+    """
+    :param graph: graph
+    :param top: node_stack의 top에 위치한 원소
+    :param visited: 노드의 방문 여부 정보
+    :return: top에 위치한 노드의 인접노드들이 전부 방문했을 때 True 반환, 하나라도 방문 안 했을 시, False 반환
+    """
     for node in graph[top]:
         if visited[node]:
             continue
@@ -37,18 +43,21 @@ def all_visited(graph, top, visited) -> bool:
 def stack_dfs(graph, v, visited):
     node_stack = []
     visited[v] = True
-    node_stack.append(v)                    # 시작 노드를 먼저 방문 처리하고 스택에 넣는다.
+    node_stack.append(v)                # 시작 노드를 먼저 방문 처리하고 스택에 넣는다.
 
     while node_stack:                   # 스택이 빌 때까지(스택이 비면 종료한다)
         top = node_stack[-1]            # 스택의 최상단 노드와(node_stack[-1]로 커서 업데이트)
 
         if all_visited(graph, top, visited):    # 스택 최상단 노드의 인접노드가 전부 방문됐을 때
-            print('popped: ', node_stack.pop())                    # 최상단 노드 제거
+            print('popped: ', node_stack.pop()) # 최상단 노드 제거
         else:
             for node in graph[top]:
-                if not visited[node]:
-                    node_stack.append(node)     # 방문 안 한 노드 하나를 삽입하고 (가장 작은 노드 삽입 기능으로 보완)
-                    visited[node] = True        # 방문처리
+                if visited[node]:
+                    continue
+                else:
+                    node_stack.append(node)  # 방문 안 한 노드 하나를 삽입하고 (->가장 작은 노드 삽입 기능으로 보완)
+                    visited[node] = True     # 방문처리
+                    break
         print(node_stack)
     print('Iterate ended')
 
