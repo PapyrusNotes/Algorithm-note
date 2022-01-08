@@ -12,7 +12,7 @@ def transpose(matrix: list) -> None:  # 행과 열의 원소를 서로 바꾸는
     n = len(matrix)
     for row in range(0, n-1):               #
         for col in range(row + 1, n):       # transpose의 정의에 맞게 y=-x를 기준으로 행,열 원소를 전치한다.
-            swap(matrix, row, col)            # matrix[row][col] <-> matrix[col][row]
+            swap(matrix, row, col)          # matrix[row][col] <-> matrix[col][row]
     return matrix
 
 
