@@ -15,12 +15,20 @@ def pop_zeros(board):
     for row in range(0, n):
         while board[row][-1] != 0:
             board[row].pop()
+    return board
+
+
+def calibrate_moves(moves):
+    for i in range(len(moves)):
+        moves[i] -= 1
+    return moves
 
 
 def solution(board, moves):
     answer = 0
     board = rotate_90(board)
     board = pop_zeros(board)
+    moves = calibrate_moves(moves)
     bucket = []
 
     while moves:
@@ -28,10 +36,10 @@ def solution(board, moves):
         if board[action]:
             doll = board[action].pop()
             bucket.append(doll)
-            if len(bucket)>=2 and bucket[-1] == bucket[-2]:
+            if len(bucket) >= 2 and bucket[-1] == bucket[-2]:
                 bucket.pop()
                 bucket.pop()
-                answer+=2
+                answer += 2
 
     return answer
 
