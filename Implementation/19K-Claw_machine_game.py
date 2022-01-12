@@ -12,7 +12,9 @@ def rotate_90(board: list) -> list:
 
 def pop_zeros(board):
     n = len(board)
-    for row in range(0,n):
+    for row in range(0, n):
+        while board[row][-1] != 0:
+            board[row].pop()
 
 
 def solution(board, moves):
