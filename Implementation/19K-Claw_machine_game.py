@@ -1,9 +1,18 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/64061
-def rotate_90(board):
+def rotate_90(board: list) -> list:
+    n = len(board)
+    new_matrix = [[0]*n for _ in range(0, n)]
+
+    for row in range(0, n):
+        for col in range(0, n):
+            new_matrix[col][n-row-1] = board[row][col]
+
+    return new_matrix
 
 
 def pop_zeros(board):
-    for i in range()
+    n = len(board)
+    for row in range(0,n):
 
 
 def solution(board, moves):
