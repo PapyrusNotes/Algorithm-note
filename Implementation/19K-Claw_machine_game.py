@@ -13,14 +13,16 @@ def rotate_90(board: list) -> list:
 def pop_zeros(board):
     n = len(board)
     for row in range(0, n):
-        while board[row][-1] != 0:
+        while board[row][-1] == 0:
             board[row].pop()
+    print(board)
     return board
 
 
 def calibrate_moves(moves):
     for i in range(len(moves)):
         moves[i] -= 1
+    print('after calibrated moves : ', moves)
     return moves
 
 
