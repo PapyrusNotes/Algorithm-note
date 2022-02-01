@@ -22,6 +22,7 @@ def pop_zeros(board):
 def calibrate_moves(moves):
     for i in range(len(moves)):
         moves[i] -= 1
+    moves.reverse()
     print('after calibrated moves : ', moves)
     return moves
 
