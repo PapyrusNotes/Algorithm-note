@@ -1,4 +1,4 @@
-
+-- Written in Postgresql
 -- 1.
 INSERT INTO {TABLE_NAME}
 ({COLUMNS}) VALUES ({PLACE_HOLDERS})
