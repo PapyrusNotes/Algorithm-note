@@ -37,4 +37,14 @@ ORDER BY DATETIME ASC
 LIMIT 1
 
 
+-- https://programmers.co.kr/learn/courses/30/lessons/59415
+SELECT MAX(DATETIME)
+FROM ANIMAL_INS
+
+-- https://programmers.co.kr/learn/courses/30/lessons/59038
+SELECT MIN(DATETIME)
+FROM ANIMAL_INS
+
+
+
 
