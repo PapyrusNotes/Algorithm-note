@@ -50,4 +50,6 @@ SELECT COUNT(ANIMAL_ID) count
 FROM ANIMAL_INS
 
 -- https://programmers.co.kr/learn/courses/30/lessons/59408
-
+SELECT COUNT (DISTINCT NAME) count
+FROM ANIMAL_INS
+WHERE NAME IS NOT NULL
