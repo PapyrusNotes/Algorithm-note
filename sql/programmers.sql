@@ -95,4 +95,4 @@ WHERE HOUR(DATETIME) BETWEEN 9 AND 20
 GROUP BY OPEN_HOUR
 ORDER BY OPEN_HOUR ASC -- 복습
 
---
+-- https://programmers.co.kr/learn/courses/30/lessons/59413
