@@ -1,4 +1,10 @@
--- Written in MySQL
+----------------------
+-- Written in MySQL --
+----------------------
+
+-------------------------------------------------------------------------------
+-- SELECT QUERY ---------------------------------------------------------------
+-------------------------------------------------------------------------------
 -- https://programmers.co.kr/learn/courses/30/lessons/59034
 SELECT *
 FROM ANIMAL_INS
@@ -35,8 +41,13 @@ SELECT NAME
 FROM ANIMAL_INS
 ORDER BY DATETIME ASC
 LIMIT 1
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
+-------------------------------------------------------------------------------
+--SUM, MAX, MIN QUERY ---------------------------------------------------------
+-------------------------------------------------------------------------------
 -- https://programmers.co.kr/learn/courses/30/lessons/59415
 SELECT MAX(DATETIME)
 FROM ANIMAL_INS
@@ -53,3 +64,25 @@ FROM ANIMAL_INS
 SELECT COUNT (DISTINCT NAME) count
 FROM ANIMAL_INS
 WHERE NAME IS NOT NULL
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------
+-- GROUP_BY QUERY -------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- https://programmers.co.kr/learn/courses/30/lessons/59040
+SELECT ANIMAL_TYPE, COUNT (*) count
+FROM ANIMAL_INS
+GROUP BY ANIMAL_TYPE
+HAVING ANIMAL_TYPE IN ('Cat','Dog')
+ORDER BY ANIMAL_TYPE ASC
+
+-- https://programmers.co.kr/learn/courses/30/lessons/59041
+SELECT NAME, COUNT (*) count
+FROM ANIMAL_INS
+GROUP BY NAME
+HAVING COUNT(NAME) >= 2
+ORDER BY NAME
+
+-- https://programmers.co.kr/learn/courses/30/lessons/59412
