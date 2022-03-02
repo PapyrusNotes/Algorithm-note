@@ -41,9 +41,9 @@ def solution(bridge_length, weight, truck_weights):
 
 
 def main():
-    bridge_length = 20
-    weight = 100
-    truck_weights = [10]
+    bridge_length = 2
+    weight = 10
+    truck_weights = [7, 4, 5, 6]
     print('answer is ', solution(bridge_length, weight, truck_weights))
 
 

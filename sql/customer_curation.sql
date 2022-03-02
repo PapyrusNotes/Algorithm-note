@@ -37,4 +37,6 @@ SET exps_yn = '1';
 
 COMMIT;
 
---6.
+--6. Upserting
+INSERT INTO table_name(column_list) VALUES(value_list)
+ON CONFLICT target action;
