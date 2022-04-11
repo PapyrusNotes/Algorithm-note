@@ -2,6 +2,8 @@
 
 from collections import deque
 
+from collections import deque
+
 
 def solution(priorities, location):
     q = deque()
@@ -14,16 +16,17 @@ def solution(priorities, location):
     if not q:
         return 0
 
-    while True:
+    while (True):
         popped = q.popleft()
-        print('popped : ', popped)
         location -= 1
-        print('location : ', location)
+        flag = False
 
         for priority in q:
             if popped < priority:
                 flag = True
                 q.append(popped)
+                if location == -1:
+                    location = len(q)
                 break
 
         if not flag:
