@@ -16,7 +16,7 @@ def solution(priorities, location):
     if not q:
         return 0
 
-    while (True):
+    while True:
         popped = q.popleft()
         location -= 1
         flag = False
@@ -30,6 +30,7 @@ def solution(priorities, location):
                 break
 
         if not flag:
-            age += 1
             if location < 0:
-                return age
+                return age + 1
+            age += 1
+
