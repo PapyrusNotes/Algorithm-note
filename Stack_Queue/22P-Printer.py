@@ -2,13 +2,11 @@
 
 from collections import deque
 
-from collections import deque
-
 
 def solution(priorities, location):
     q = deque()
     flag = False
-    age = 0
+    age = 1
 
     for priority in priorities:
         q.append(priority)
@@ -26,11 +24,12 @@ def solution(priorities, location):
                 flag = True
                 q.append(popped)
                 if location == -1:
-                    location = len(q)
+                    location = len(q) - 1
                 break
 
         if not flag:
             if location < 0:
-                return age + 1
+                return age
             age += 1
+
 
