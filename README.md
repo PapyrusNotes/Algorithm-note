@@ -8,6 +8,12 @@ algorithm note for coding test and algorithm interview
   2. P : Programmers
 
   detail url is in the solution code.
+ 
+ ## Commit name rule  
+ - ADD : Added new test for the first time.  
+ - REVISE : Revised the code, but didn't solved the test.  
+ - SOLVED : Solved and passed the example input sets.
+ - OPTIMIZE : Upgrade solved solution to better code of which performance is better.
 
 
 ## Custom algorithm
