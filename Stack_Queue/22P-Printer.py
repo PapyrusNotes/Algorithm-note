@@ -5,7 +5,6 @@ from collections import deque
 
 def solution(priorities, location):
     q = deque()
-    flag = False
     age = 1
 
     for priority in priorities:
