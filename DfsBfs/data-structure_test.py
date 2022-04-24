@@ -48,8 +48,7 @@ def all_visited(graph, top, visited) -> bool:
     for node in graph[top]:
         if visited[node]:
             continue
-        else:
-            return False
+        return False
     return True
 
 
