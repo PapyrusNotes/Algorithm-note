@@ -1,10 +1,13 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/43162
 
 def all_visited(graph, top, visited) -> bool:
-    for node in graph[top]:
-        if visited[node]:
+    for i, node in enumerate(graph[top]):
+        if node != 1:
             continue
-        return False
+        if visited[i]:
+            continue
+        else:
+            return False
     return True
 
 
@@ -12,19 +15,25 @@ def solution(n, computers):
     visited = []
     stack = []
 
-    visited.append(0)
-    stack.append(0)
-
     for v in range(0, n):
+        if v in visited:
+            print(f'{v} is already graphed')
+            continue
+        visited.append(v)
+        stack.append(v)
         while stack:
             top = stack[-1]
-        if all_visited(graph, top, visited):     # 스택 최상단 노드의 인접노드가 전부 방문됐을 때
-            print('popped: ', node_stack.pop())  # 최상단 노드 제거
-        if v == connection:
-            continue
-        if connection in visited:
-            continue
-        stack.append()
+            if all_visited(computers, top, visited):
+                print('popped : ', stack.pop())
+            else:
+                for i, node in enumerate(computers[top]):
+                    if i == 1 and i in visited:
+                        continue
+                    if i == 1 and i not in visited:
+                        stack.append(i)
+                        visited.append(i)
+                        break
+            print('stack status : ', stack)
 
 
 def main():
