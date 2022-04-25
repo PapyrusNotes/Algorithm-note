@@ -1,36 +1,35 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/43162
 
-def travel_network(n, v, computers):
-    visited = [False] * n
-    stack = []
-
-    return visited
-
-
-def delete_visited(visited_node, computers):
-    for vn in visited_node:
-        del computers[vn]
-    return computers
+def all_visited(graph, top, visited) -> bool:
+    for node in graph[top]:
+        if visited[node]:
+            continue
+        return False
+    return True
 
 
 def solution(n, computers):
-    n_networks = 0
+    visited = []
+    stack = []
 
-    if n is 0:
-        return 0
+    visited.append(0)
+    stack.append(0)
 
-    # Start traveling networks from computer 0
-    while computers:
-        visited_node = travel_network(n, 0, computers)
-        computers = delete_visited(visited_node, computers)
-        n_networks += 1
-
-    return n_networks
+    for v in range(0, n):
+        while stack:
+            top = stack[-1]
+        if all_visited(graph, top, visited):     # 스택 최상단 노드의 인접노드가 전부 방문됐을 때
+            print('popped: ', node_stack.pop())  # 최상단 노드 제거
+        if v == connection:
+            continue
+        if connection in visited:
+            continue
+        stack.append()
 
 
 def main():
-    n = 3
-    computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+    n = 5
+    computers = [[1, 1, 0, 0, 0], [1, 0, 0, 1, 0], [0, 0, 1, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 1]]
 
     print(solution(n, computers))
 
