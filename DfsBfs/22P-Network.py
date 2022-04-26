@@ -4,7 +4,7 @@ def all_visited(graph, top, visited) -> bool:
     for i, node in enumerate(graph[top]):
         if node != 1:
             continue
-        if visited[i]:
+        if i in visited:
             continue
         else:
             return False
@@ -27,9 +27,9 @@ def solution(n, computers):
                 print('popped : ', stack.pop())
             else:
                 for i, node in enumerate(computers[top]):
-                    if i == 1 and i in visited:
+                    if node == 1 and i in visited:
                         continue
-                    if i == 1 and i not in visited:
+                    if node == 1 and i not in visited:
                         stack.append(i)
                         visited.append(i)
                         break
