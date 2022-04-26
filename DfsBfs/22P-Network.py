@@ -14,6 +14,7 @@ def all_visited(graph, top, visited) -> bool:
 def solution(n, computers):
     visited = []
     stack = []
+    graph = 0
 
     for v in range(0, n):
         if v in visited:
@@ -34,6 +35,9 @@ def solution(n, computers):
                         visited.append(i)
                         break
             print('stack status : ', stack)
+        graph += 1
+
+    print('The number of graph : ', graph)
 
 
 def main():
