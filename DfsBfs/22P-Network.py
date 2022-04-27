@@ -40,6 +40,11 @@ def solution(n, computers):
     print('The number of graph : ', graph)
 
 
+'''
+Optimization in iteration required
+'''
+
+
 def main():
     n = 5
     computers = [[1, 1, 0, 0, 0], [1, 0, 0, 1, 0], [0, 0, 1, 0, 1], [0, 1, 0, 1, 0], [0, 0, 1, 0, 1]]
