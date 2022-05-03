@@ -6,22 +6,50 @@ def is_replaceable(word1, word2) -> bool:
         if character == word2[i]:
             continue
         else:
-            diff_n+=1
+            diff_n += 1
             if diff_n == 2:
                 return False
     return True
 
+
+def draw_graph(words) -> list:
+    n = len(words)
+    connection = [[] * i for i in range(0, n)]
+    for i in range(0, n):
+        for j in range(0, n):
+            if i == j:
+                continue
+            if is_replaceable(words[i], words[j]):
+                connection[i].append(j)
+    return connection
+
+
 def solution(begin, target, words):
+
+    graph = draw_graph(words)
+    print(graph)
+    return 0
+
     if target not in words:
         return 0
 
     word = begin
+    stack = []
+    visited = []
     level = 0
 
-    while word != target:
+    for i, word1 in enumerate(words):
 
+        min_level = len(words)
+        level = 0
 
-    return level
+        if is_replaceable(begin, word1):
+            stack.append(i)
+            visited.append(i)
+            level += 1
+        else:
+            continue
+
 
 
 def main():
