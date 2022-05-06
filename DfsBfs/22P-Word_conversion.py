@@ -27,8 +27,8 @@ def draw_graph(words) -> list:
 def solution(begin, target, words):
 
     graph = draw_graph(words)
-    print(graph)
-    return 0
+    # print(graph)
+    # return 0
 
     if target not in words:
         return 0
@@ -38,17 +38,7 @@ def solution(begin, target, words):
     visited = []
     level = 0
 
-    for i, word1 in enumerate(words):
 
-        min_level = len(words)
-        level = 0
-
-        if is_replaceable(begin, word1):
-            stack.append(i)
-            visited.append(i)
-            level += 1
-        else:
-            continue
 
 
 
