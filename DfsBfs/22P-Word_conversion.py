@@ -26,19 +26,18 @@ def draw_graph(words) -> list:
 
 def solution(begin, target, words):
 
-    graph = draw_graph(words)
-    # print(graph)
-    # return 0
-
     if target not in words:
         return 0
+
+    graph = draw_graph(words)
+    print('generated graph : ', graph)
+
 
     word = begin
     stack = []
     visited = []
     level = 0
-
-
+    min_level = 0
 
 
 
