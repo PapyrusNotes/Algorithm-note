@@ -24,21 +24,64 @@ def draw_graph(words) -> list:
     return connection
 
 
+def all_visited(top, visited, graph):
+    for n in graph[top]:
+        if visited[n]:
+            continue
+        else:
+            return False
+    return True
+
+
 def solution(begin, target, words):
 
     if target not in words:
         return 0
 
+    # generate graph for
     graph = draw_graph(words)
+    N = len(graph)
     print('generated graph : ', graph)
 
+    min_level = N
 
-    word = begin
-    stack = []
-    visited = []
-    level = 0
-    min_level = 0
+    departure = [i for i, word in enumerate(words) if is_replaceable(begin, word) is True]
+    print('departure : ', departure)
 
+    for i, node in enumerate(graph):
+        if i not in departure:
+            continue
+
+        print(f'start departure {i}')
+
+        stack = []
+        visited = [False]*N
+        level = 0
+
+        stack.append(i)
+        level += 1
+        visited[i] = True
+
+        while stack:
+            top = stack[-1]
+            if all_visited(top, visited, graph):
+                stack.pop()
+                level -= 1
+            else:
+                for n in graph[top]:
+                    if visited[n]:
+                        continue
+                    if words[n] == target:
+                        level += 1
+                        if level < min_level:
+                            min_level = level
+                            break
+                    else:
+                        stack.append(n)
+                        level += 1
+                        visited[n] = True
+
+    return min_level
 
 
 def main():
