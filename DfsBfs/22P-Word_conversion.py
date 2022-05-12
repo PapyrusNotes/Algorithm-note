@@ -42,42 +42,46 @@ def solution(begin, target, words):
     graph = draw_graph(words)
     n = len(graph)
     min_level = n
-    print('generated graph : ', graph)
+    #print('generated graph : ', graph)
 
     # set departure node
     departure = [i for i, word in enumerate(words) if is_replaceable(begin, word) is True]
-    print('departure node : ', departure)
+    #print('departure node : ', departure)
 
     # set variables for DFS
     stack = []
     visited = [False]*n
 
-    for i, node in enumerate(departure):
-        print(f'start departure {i}')
-        level = 1
+    for node in departure:
+        #print(f'start departure {node}')
+        level = 0
 
-        stack.append(i)
-        visited[i] = True
+        stack.append(node)
+        visited[node] = True
         level += 1
 
         while stack:
             top = stack[-1]
-            for index in graph[top]:
-                if words[index] == target:
+            if all_visited(top, visited, graph):
+                stack.pop()
+                level -= 1
+            else:
+                for i in graph[top]:
+                    if visited[i]:
+                        continue
+                    if words[i] == target:
+                        level += 1
+                        if level < min_level:
+                            min_level = level
+                        stack.pop()
+                        level -= 2
+                        continue
+                    stack.append(i)
                     level += 1
-                    if level < min_level:
-                        min_level = level
-                    continue
-
-
-
-
-
-
-
+                    visited[i] = True
+                    break
 
     return min_level
-
 
 def main():
 
