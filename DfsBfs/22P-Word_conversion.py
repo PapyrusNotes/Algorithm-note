@@ -41,50 +41,52 @@ def solution(begin, target, words):
     # generate graph
     graph = draw_graph(words)
     n = len(graph)
-    min_level = n
-    #print('generated graph : ', graph)
+    print('generated graph : ', graph)
 
     # set departure node
     departure = [i for i, word in enumerate(words) if is_replaceable(begin, word) is True]
-    #print('departure node : ', departure)
+    print('departure node : ', departure)
 
-    # set variables for DFS
-    stack = []
-    visited = [False]*n
+    # DFS departure node
+    for depart_p in departure:
+        min_lvl = n
+        lvl = 0
+        stack = []
+        visited = [False]*n
 
-    for node in departure:
-        #print(f'start departure {node}')
-        level = 0
-
-        stack.append(node)
-        visited[node] = True
-        level += 1
+        stack.append(depart_p)
+        visited[depart_p] = True
+        lvl += 1
 
         while stack:
+            print('stack : ', stack)
             top = stack[-1]
+            flag = False    # top 인덱스를 가지는 노드의 인접노드들의 값들이 target인지 여부
             if all_visited(top, visited, graph):
-                stack.pop()
-                level -= 1
+                print('popped : ', stack.pop())
             else:
-                for i in graph[top]:
-                    if visited[i]:
+                for node in graph[top]:
+                    if words[node] == target:
+                        print('found target')
+                        visited[node] = True
+                        flag = True
+                        lvl += 1
+                        if lvl < min_lvl:
+                            min_lvl = lvl
+                        lvl -= 1
+                        break
+                if
+                    elif visited[node]:
                         continue
-                    if words[i] == target:
-                        level += 1
-                        if level < min_level:
-                            min_level = level
-                        stack.pop()
-                        level -= 2
-                        continue
-                    stack.append(i)
-                    level += 1
-                    visited[i] = True
-                    break
+                    else:
+                        stack.append(node)
+                        visited[node] = True
+                        lvl += 1
+                        break
+    return min_lvl
 
-    return min_level
 
 def main():
-
     begin = "hit"
     target = "cog"
     words = ["hot", "dot", "dog", "lot", "log", "cog"]
