@@ -9,7 +9,10 @@ def is_replaceable(word1, word2) -> bool:
             diff_n += 1
             if diff_n == 2:
                 return False
-    return True
+    if diff_n == 1:
+        return True
+    else:
+        return False
 
 
 def draw_graph(words) -> list:
@@ -33,9 +36,25 @@ def all_visited(top, visited, graph):
     return True
 
 
-def solution(begin, target, words):
+def near_target(index, graph, target_i):
+    for node in graph[index]:
+        if node == target_i:
+            return True
+    return False
 
-    if target not in words:
+
+# target 문자열의 index를 반환하는 함수. 수행 시간 감소 효과.
+def get_target_i(target, words):
+    for i, word in enumerate(words):
+        if word == target:
+            return i
+    return None
+
+
+def solution(begin, target, words):
+    # get target index
+    target_i = get_target_i(target, words)
+    if target_i is None:
         return 0
 
     # generate graph
@@ -52,8 +71,10 @@ def solution(begin, target, words):
         min_lvl = n
         lvl = 0
         stack = []
-        visited = [False]*n
+        visited = [False] * n
 
+        if depart_p == target_i:
+            return 1
         stack.append(depart_p)
         visited[depart_p] = True
         lvl += 1
@@ -61,34 +82,33 @@ def solution(begin, target, words):
         while stack:
             print('stack : ', stack)
             top = stack[-1]
-            flag = False    # top 인덱스를 가지는 노드의 인접노드들의 값들이 target인지 여부
+
             if all_visited(top, visited, graph):
                 print('popped : ', stack.pop())
+                lvl -= 1
             else:
-                for node in graph[top]:
-                    if words[node] == target:
-                        print('found target')
-                        visited[node] = True
-                        flag = True
-                        lvl += 1
-                        if lvl < min_lvl:
-                            min_lvl = lvl
-                        lvl -= 1
-                        break
-                if
-                    elif visited[node]:
-                        continue
-                    else:
-                        stack.append(node)
-                        visited[node] = True
-                        lvl += 1
-                        break
+                if near_target(top, graph, target_i):
+                    print('found target')
+                    lvl += 1
+                    if lvl < min_lvl:
+                        min_lvl = lvl
+                    stack.pop()
+                    lvl -= 2
+                else:
+                    for node in graph[top]:
+                        if visited[node]:
+                            continue
+                        else:
+                            stack.append(node)
+                            visited[node] = True
+                            lvl += 1
+                            break
     return min_lvl
 
 
 def main():
-    begin = "hit"
-    target = "cog"
+    begin = "hot"
+    target = "lot"
     words = ["hot", "dot", "dog", "lot", "log", "cog"]
 
     print(solution(begin, target, words))
