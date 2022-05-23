@@ -3,7 +3,7 @@
 
 def solution(tickets):
     stack = []
-    answer = []
+    route = ['ICN']
     visited = [False]*len(tickets)
     candidates = []
 
@@ -18,10 +18,13 @@ def solution(tickets):
             departure = i
 
     stack.append(departure)
+    route.append(tickets[departure][1])
     visited[departure] = True
+
     while stack:
         top = stack[-1]
         arrival = tickets[top][1]
+
         for i, ticket in enumerate(tickets):
             if visited[i]:
                 continue
