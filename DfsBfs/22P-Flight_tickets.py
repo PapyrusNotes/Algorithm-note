@@ -32,11 +32,10 @@ def solution(tickets):
                 stack.append(i)
                 visited[i] = True
                 break
+        if len(stack) == len(tickets):
+            candida
 
-
-
-
-    return answer
+    return route
 
 
 if __name__ == '__main__':
