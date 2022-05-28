@@ -15,7 +15,7 @@ route.append(stack) # route = [[1,0,2,4]]
 
 
 
-# Correct case
+# Correct case (by creating new list instance)
 stack = [1,2,3,4,5,6]
 route = []
 
@@ -24,5 +24,14 @@ for i in range(0,len(stack)):
     temp = list(stack)
     route.append(temp)
     print('route : ', route)   # route :  [[1, 2, 3, 4, 5], [1, 2, 3, 4], [1, 2, 3], [1, 2], [1], []]
+    
+# Correct case (by using list slicing)
+stack = [1,2,3,4,5,6]
+route = []
 
+for i in range(0,len(stack)):
+    stack.pop()
+    temp = stack[:]
+    route.append(temp)
+    print('route : ', route)   # route :  [[1, 2, 3, 4, 5], [1, 2, 3, 4], [1, 2, 3], [1, 2], [1], []]
 ```

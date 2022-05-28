@@ -1,41 +1,41 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/43164
 
-
 def solution(tickets):
-    stack = []
-    route = ['ICN']
-    visited = [False]*len(tickets)
-    candidates = []
+    route = []
+    departures = []
+    n_route = len(tickets)
 
-    for ticket in tickets:
-        if ticket[0] == 'ICN':
-            candidates.append(ticket)
+    for i, ticket in enumerate(tickets):
+        if ticket[0] == "ICN":
+            departures.append(i)
 
-    departure = candidates[0]
+    for departure_i in departures:
+        stack = []
+        visited = [False] * n_route
+        stack.append(departure_i)
+        visited[departure_i] = True
 
-    for i in range(0, len(candidates) - 1):
-        if candidates[i][1] < candidates[i + 1][1]:
-            departure = i
-
-    stack.append(departure)
-    route.append(tickets[departure][1])
-    visited[departure] = True
-
-    while stack:
-        top = stack[-1]
-        arrival = tickets[top][1]
-
-        for i, ticket in enumerate(tickets):
-            if visited[i]:
+        while stack:
+            if len(stack) == n_route:
+                temp = list(stack)
+                route.append(temp)
+            print('route : ', route)
+            top = stack[-1]
+            pop_flag = True
+            for i, ticket in enumerate(tickets):
+                if tickets[top][1] == ticket[0]:
+                    if visited[i]:
+                        continue
+                    else:
+                        stack.append(i)
+                        visited[i] = True
+                        pop_flag = False
+                        break
+            if pop_flag:
+                stack.pop()
+            else:
                 continue
-            elif arrival == ticket[0]:
-                stack.append(i)
-                visited[i] = True
-                break
-        if len(stack) == len(tickets):
-            candida
-
-    return route
+            print('route : ', route)
 
 
 if __name__ == '__main__':
