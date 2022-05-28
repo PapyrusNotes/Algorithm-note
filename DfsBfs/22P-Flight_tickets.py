@@ -1,7 +1,7 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/43164
 
 def solution(tickets):
-    route = []
+    routes = []
     departures = []
     n_route = len(tickets)
 
@@ -17,9 +17,11 @@ def solution(tickets):
 
         while stack:
             if len(stack) == n_route:
-                temp = list(stack)
-                route.append(temp)
-            print('route : ', route)
+                tmp = []
+                for index in stack:
+                    tmp.append(tickets[index][0])
+                tmp.append(tickets[index][1])
+                routes.append(tmp)
             top = stack[-1]
             pop_flag = True
             for i, ticket in enumerate(tickets):
@@ -35,11 +37,23 @@ def solution(tickets):
                 stack.pop()
             else:
                 continue
-            print('route : ', route)
+            print('routes : ', routes)
+
+    min_destination = min(routes[0])
+    min_route = routes[0]
+
+    for route in routes:
+        min_i = n_route-1
+        for i, destination in enumerate(route):
+            if min_destination == destination:
+                if i < min_i:
+                    min_i = i
+                    min_route = route
+    return min_route
 
 
 if __name__ == '__main__':
     tickets1 = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
     tickets2 = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL", "SFO"]]
 
-    print(solution(tickets1))
+    print(solution(tickets2))
