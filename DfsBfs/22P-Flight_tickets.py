@@ -1,4 +1,5 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/43164
+# 테스트케이스1과 문제조건 : 주어진 모든 항공권을 사용해야함 사이에 모순이 있음.-> 컴파일 오류의 원인
 
 def solution(tickets):
     routes = []
