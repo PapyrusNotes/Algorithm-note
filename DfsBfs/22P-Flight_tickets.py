@@ -57,4 +57,5 @@ if __name__ == '__main__':
     tickets2 = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL", "SFO"]]
     tickets3 = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"], ["ICN", "JFK"], ["ICN", "JFK"]]
     tickets4 = [["ICN", "A"], ["ICN", "B"], ["B", "ICN"]]
-    print(solution(tickets4))
+    tickets5 = [["ICN", "A"], ["ICN", "A"], ["A", "ICN"], ["A", "C"]]
+    print(solution(tickets5))
