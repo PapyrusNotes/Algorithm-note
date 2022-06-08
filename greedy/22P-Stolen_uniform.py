@@ -1,11 +1,23 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/42862
 
 def solution(n, lost, reserve):
-    
-
     answer = 0
-    return answer
 
+    while reserve:
+        popped = reserve.pop(0)
+        if popped in lost:
+            lost.remove(popped)
+            answer += 1
+        if popped - 1 in lost:
+            lost.remove(popped - 1)
+            answer += 2
+            continue
+        if popped + 1 in lost:
+            lost.remove(popped + 1)
+            answer += 2
+            continue
+
+    return answer
 
 def main():
     n = 5
