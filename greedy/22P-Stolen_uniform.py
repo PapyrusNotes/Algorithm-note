@@ -1,5 +1,5 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/42862
-
+# 반복 코드 구간 단축시켜보기
 def solution(n, lost, reserve):
     answer = n - len(set(lost + reserve))
     lost.sort()
