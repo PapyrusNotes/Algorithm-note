@@ -1,7 +1,7 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/42862
 
 def solution(n, lost, reserve):
-    answer = 0
+    answer = n - len(set(lost + reserve))
 
     while reserve:
         popped = reserve.pop(0)
@@ -16,8 +16,10 @@ def solution(n, lost, reserve):
             lost.remove(popped + 1)
             answer += 2
             continue
+        answer += 1
 
     return answer
+
 
 def main():
     n = 5
