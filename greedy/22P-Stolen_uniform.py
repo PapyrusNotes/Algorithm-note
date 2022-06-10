@@ -8,6 +8,7 @@ def solution(n, lost, reserve):
         if popped in lost:
             lost.remove(popped)
             answer += 1
+            continue
         if popped - 1 in lost:
             lost.remove(popped - 1)
             answer += 2
