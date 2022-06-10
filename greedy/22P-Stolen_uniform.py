@@ -2,30 +2,42 @@
 
 def solution(n, lost, reserve):
     answer = n - len(set(lost + reserve))
-
+    lost.sort()
+    reserve.sort()
     while reserve:
         popped = reserve.pop(0)
         if popped in lost:
-            lost.remove(popped)
-            answer += 1
-            continue
+            try:
+                lost.remove(popped)
+                answer += 1
+                reserve.remove(popped)
+                continue
+            except ValueError:
+                continue
         if popped - 1 in lost:
-            lost.remove(popped - 1)
-            answer += 2
-            continue
+            try:
+                lost.remove(popped - 1)
+                answer += 2
+                reserve.remove(popped - 1)
+                continue
+            except ValueError:
+                continue
         if popped + 1 in lost:
-            lost.remove(popped + 1)
-            answer += 2
-            continue
+            try:
+                lost.remove(popped + 1)
+                answer += 2
+                reserve.remove(popped + 1)
+                continue
+            except ValueError:
+                continue
         answer += 1
-
     return answer
 
 
 def main():
-    n = 5
-    lost = [2, 4]
-    reserve = [1, 3, 5]
+    n = 7
+    lost = [2, 3, 4]
+    reserve = [1, 2, 3, 6]
 
     print(solution(n, lost, reserve))
 
