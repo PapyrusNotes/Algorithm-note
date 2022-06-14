@@ -2,8 +2,12 @@
 
 def solution(name):
     answer = 0
-    return answer
+    cursor = 0
+    first_index = 0
+    last_index = len(name) - 1
+    init_name = "A" * len(name)
 
+    return answer
 
 def main():
     name1 = "JEROEN"
