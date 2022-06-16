@@ -7,6 +7,11 @@ def solution(name):
     last_index = len(name) - 1
     init_name = "A" * len(name)
 
+    switch_or_not = False
+    first_A_index(name) - 1
+    last_A_index(name) - 1
+
+
     return answer
 
 def main():
