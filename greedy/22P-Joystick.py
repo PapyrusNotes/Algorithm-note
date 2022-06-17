@@ -1,6 +1,7 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/42860
 
 def solution(name):
+    # n_cursor + n_alphabet = n_joystick
     answer = 0
     cursor = 0
     first_index = 0
@@ -8,8 +9,10 @@ def solution(name):
     init_name = "A" * len(name)
 
     switch_or_not = False
-    first_A_index(name) - 1
-    last_A_index(name) - 1
+    if first_A_index(name) * 2 + len(name) - end_A_index(name) < len(name) - 1 :
+
+    # cursor 조작 횟수 이득 조건
+
 
 
     return answer
