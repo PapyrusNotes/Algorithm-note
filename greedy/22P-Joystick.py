@@ -1,7 +1,4 @@
 # 출처 : https://programmers.co.kr/learn/courses/30/lessons/42860
-def  first_A_index(name : str):
-
-
 
 def solution(name):
     # n_cursor(커서 이동 조작) + n_alphabet(알파벳 이동 조작) = n_joystick(총 조작 횟수)
@@ -19,6 +16,9 @@ def solution(name):
 
     flag_a = False # 'A' 문자 최초 발견 후 진행중 여부
     count_a = 0
+    # 한 번도 'A'가 안 나왔을 때는 어떻게 처리? -> 한 번도 'A'가 안 나왔을 때 안 쓰이는 변수 활용
+    # first_a_index가 쓰이지 않았다면, 초기화 값으로 판별하기 (first_a_index = -1)
+    # if first_a_index == -1 : cursor_move = len(name) - 1
     for i, character in enumerate(name):
         if character != 'A' and not flag_a: # 'A' 구간이 아닌 구간의 조건
             continue
@@ -35,6 +35,7 @@ def solution(name):
             flag_a = False
             if i < count_a :                # 커서 이득 조건 : 역으로 되돌아가는 길이 < 이득 길이
 
+
             continue
 
 
@@ -48,7 +49,7 @@ def solution(name):
 def main():
     name1 = "JEROEN"
     name2 = "JAN"
-
+    name3 = "SPORTS"
     print(solution(name1))
 
     return 0
