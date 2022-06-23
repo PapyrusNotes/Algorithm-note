@@ -16,14 +16,22 @@ def solution(name):
 
     flag_a = False # 'A' 문자 최초 발견 후 진행중 여부
     count_a = 0
+    first_a_index = -1
+    cursor_move = 0
+    char_move = 0
     # 한 번도 'A'가 안 나왔을 때는 어떻게 처리? -> 한 번도 'A'가 안 나왔을 때 안 쓰이는 변수 활용
     # first_a_index가 쓰이지 않았다면, 초기화 값으로 판별하기 (first_a_index = -1)
     # if first_a_index == -1 : cursor_move = len(name) - 1
     for i, character in enumerate(name):
         if character != 'A' and not flag_a: # 'A' 구간이 아닌 구간의 조건
+            if 'A'< character <='N':
+                char_move += character - 'A'
+            elif 'N' < character <= 'Z':
+                char_move += 13 - (character - 'N')
             continue
         if character =='A' and not flag_a:  # 'A' 구간의 시작 조건
             first_a_index = i
+            end_a_index = i
             flag_a = True
             count_a += 1
             continue
@@ -31,13 +39,15 @@ def solution(name):
             count_a += 1
             continue
         if character != 'A' and flag_a:     # 'A' 구간이 끝나는 조건
-            end_a_index = i
+            end_a_index = i-1
             flag_a = False
             if i < count_a :                # 커서 이득 조건 : 역으로 되돌아가는 길이 < 이득 길이
+                break
 
-
-            continue
-
+    if first_a_index == -1:
+        cursor_move = len(name)-1
+    else:
+        for i in range(end_a_index, ):
 
 
 
