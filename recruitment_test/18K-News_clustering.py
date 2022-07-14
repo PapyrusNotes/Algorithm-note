@@ -2,6 +2,15 @@
 
 def solution(str1, str2):
     answer = 0
+
+    jaccard = 0
+    answer = jaccard*65536
+    '''
+    8 bit = 1 byte
+    1 byte는 대부분의 컴퓨터에서 정보의 단위이다.
+    기본적으로 2^8인 256비트까지 표현가능하지만, 
+    더 큰 수를 표현하기 위해 2^16인 경우, 0~65535까지 표현가능.
+    '''
     return answer
 
 
