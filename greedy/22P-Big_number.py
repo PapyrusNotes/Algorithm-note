@@ -13,6 +13,7 @@ def solution(number, k):
     # 남길 큰 숫자들 기준
     big_numbers = [0]*(len(number)-k)
     big_numbers[0] = number[0]
+
     for n in number:
         if n > big_numbers[0]:
             insert(big_numbers, n)
