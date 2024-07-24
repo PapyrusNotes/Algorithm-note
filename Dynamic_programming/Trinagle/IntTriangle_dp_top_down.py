@@ -24,4 +24,7 @@ def solution(triangle):
     return recur(triangle, row, i, dp_table)
 
 
+# TODO : 2*row + 1 , 2*row + 2
+
+
 print(solution(triangle_input))
