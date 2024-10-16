@@ -1,10 +1,13 @@
 from itertools import combinations
 
+def print_set(lst):
+    for ele in lst:
+        print(ele, end=' ')
 
 def lib_comb(s):
     comb = combinations(s, 6)
     for lst in list(comb):
-        print(lst)
+        print_set(lst)
         print()
 
 
