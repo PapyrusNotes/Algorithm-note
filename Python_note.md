@@ -35,3 +35,13 @@ for i in range(0,len(stack)):
     route.append(temp)
     print('route : ', route)   # route :  [[1, 2, 3, 4, 5], [1, 2, 3, 4], [1, 2, 3], [1, 2], [1], []]
 ```
+
+---
+
+- lambda 함수를 사용할 떄
+선언과 동시에 사용할 수 있다.
+간단한 함수를 인자로 넘겨줄 때 사용한다.
+- 구성 형태
+lambda arguments: expression
+- arguemtns: 인자
+- expression: 함수의 반환값.
