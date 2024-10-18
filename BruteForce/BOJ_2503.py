@@ -11,7 +11,7 @@ def is_matching(candidate, s):
 
         strike_n = 0
         ball_n = 0
-        conditon_ok = False
+        condition_ok = False
 
         for i in range(3):
             if int(c[i]) == candidate[i]:
@@ -20,12 +20,12 @@ def is_matching(candidate, s):
                 ball_n += 1
 
         if (strike_n == strike) and (ball_n == ball):
-            conditon_ok = True
+            condition_ok = True
         else:
-            conditon_ok = False
-            return conditon_ok
+            condition_ok = False
+            return condition_ok
 
-    return conditon_ok
+    return condition_ok
 
 
 N = int(input())
