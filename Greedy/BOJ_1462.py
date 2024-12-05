@@ -21,7 +21,8 @@ if nbl:
 if pbl:
     mpbl = pbl[-1]
 
-#print(mnbl, mpbl)
+# print(mnbl, mpbl)
+# 방향을 바꾸지 않는 것이 이득이다.
 
 if mnbl>mpbl:
     for n in range(len(nbl)-1, -1, -M):
