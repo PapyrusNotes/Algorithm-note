@@ -22,5 +22,3 @@ for i in range(2, N + 1):
             dp[i][j] = min(dp[i - 1][0], dp[i - 1][1]) + costs[i][j]
 
 print(min(dp[i][0], dp[i][1], dp[i][2]))
-try:
-except Ind
