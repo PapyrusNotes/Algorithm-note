@@ -12,7 +12,7 @@ for index, item in enumerate(arr):
 	p2 = index
 	tot = arr[p1]
 
-	while (tot < M and p2 < N-1):
+	while tot < M and p2 < N-1:
 		p2 += 1
 		tot += arr[p2]
 
